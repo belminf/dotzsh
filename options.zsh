@@ -5,3 +5,7 @@ set -o noclobber
 
 ## Shift-Tab to accept auto-suggestion
 bindkey '^[[Z' autosuggest-execute
+
+# Paging
+PAGER=$(command -v less)
+LESS='-XRF'
