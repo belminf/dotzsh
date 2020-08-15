@@ -20,3 +20,4 @@ antigen bundle zsh-users/zsh-history-substring-search
 antigen apply
 
 source ~/.zsh/theme.zsh
+source ~/.zsh/options.zsh
