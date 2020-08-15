@@ -21,3 +21,4 @@ antigen apply
 
 source ~/.zsh/theme.zsh
 source ~/.zsh/options.zsh
+source ~/.zsh/aliases.zsh
