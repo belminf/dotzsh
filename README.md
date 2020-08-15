@@ -16,7 +16,7 @@ yay -S antigen
 brew install antigen
 ```
 
-## Setup
+### Setup
 
 ```
 git clone
