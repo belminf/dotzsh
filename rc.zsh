@@ -19,7 +19,7 @@ antigen bundle zsh-users/zsh-history-substring-search
 
 antigen apply
 
-source ~/.zsh/theme.zsh
-source ~/.zsh/options.zsh
-source ~/.zsh/aliases.zsh
-source ~/.zsh/ssh_agent.zsh
+source ~/.zsh/src/theme.zsh
+source ~/.zsh/src/options.zsh
+source ~/.zsh/src/aliases.zsh
+source ~/.zsh/src/ssh_agent.zsh
