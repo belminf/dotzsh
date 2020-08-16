@@ -3,8 +3,8 @@ set -o noclobber
 
 # Keybindings
 
-## Shift-Tab to accept auto-suggestion
-bindkey '^[[Z' autosuggest-execute
+## Alt-Space to accept auto-suggestion
+bindkey '^[ ' autosuggest-execute
 
 ## Up and down for history substring search
 bindkey '\eOA' history-substring-search-up
