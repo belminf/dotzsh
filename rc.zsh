@@ -4,7 +4,6 @@ antigen use oh-my-zsh
 
 antigen bundle gitfast
 antigen bundle git-auto-fetch
-antigen bundle command-not-found
 antigen bundle aws
 antigen bundle knife
 antigen bundle git-prompt

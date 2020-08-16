@@ -6,13 +6,15 @@ PS_COLOR_GOOD="%F{35}"
 PS_COLOR_BAD="%F{124}"
 PS_COLOR_SOSO="%F{117}"
 PS_COLOR_RHS="%F{74}"
+PS_TC_UP="%{$(echotc UP 1)%}"
+PS_TC_DOWN="%{$(echotc DO 1)%}"
 
 # Prompt variables
 PROMPT='
 ${PS_COLOR_PRIMARY}%* ${PS_COLOR_SECONDARY}%3~ ${PS_COLOR_FAINT}%h%{$reset_color%}
 %{%(?.${PS_COLOR_PRIMARY}.${PS_COLOR_BAD})%}$%{$reset_color%} '
 PROMPT2='${PS_COLOR_PRIMARY}>%{$reset_color%} '
-RPROMPT='%{$(echotc UP 1)%}$(__rprompt)%{$(echotc DO 1)%}'
+RPROMPT='${PS_TC_UP}$(__rprompt)${PS_TC_DOWN}'
 RPROMPT_SEP="${PS_COLOR_FAINT}⸗"
 
 # Git
