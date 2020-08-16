@@ -7,14 +7,14 @@
 #### Arch
 
 ```
-yay -S --needed pkgfile zsh git fzf direnv python-pipenv kubectx ripgrep zsh-completions bat gron-bin git tree tldr
+yay -S --needed pkgfile zsh git fzf direnv python-pipenv kubectx ripgrep bat gron-bin git tree tldr
 sudo systemctl enable pkgfile-update.timer
 ```
 
 #### macOS
 
 ```
-brew install coreutils gnu-sed gnu-which zsh git fzf direnv pipenv kubectx ripgrep zsh-completion bat gron git tree tldr
+brew install coreutils gnu-sed gnu-which zsh git fzf direnv pipenv kubectx ripgrep bat gron git tree tldr
 ```
 
 ### Setup
