@@ -15,6 +15,7 @@ alias gp='git push'
 alias gpu='git pull'
 alias gpf='git push -f'
 alias gc='git commit -m'
+alias gca='git commit -a -m'
 alias gcm='git commend'
 alias gcmm='git commend -m'
 alias gl='git lg'
@@ -27,7 +28,8 @@ alias watch='watch '
 
 # Conditional aliases
 if hash nvim 2>/dev/null; then
-  alias vim='nvim'
+  alias v='nvim'
+  alias v='vim'
 fi
 
 if hash bat 2>/dev/null; then
