@@ -71,7 +71,7 @@ KUBE_PS1_CLUSTER_FUNCTION=__k8s_cluster_short
 function __k8s_ns_short() {
   local k8s_ns="$1"
   if [ -n "$k8s_ns" ] && [ "$k8s_ns" != "default" ]; then
-    echo -n "${PS_COLOR_FAINT}:${PS_COLOR_RHS}${k8s_context}"
+    echo "${PS_COLOR_FAINT}:${PS_COLOR_RHS}${k8s_ns}"
   fi
 }
 KUBE_PS1_NAMESPACE_FUNCTION=__k8s_ns_short
