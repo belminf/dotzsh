@@ -11,6 +11,7 @@ antigen bundle kube-ps1
 antigen bundle ripgrep
 antigen bundle golang
 antigen bundle direnv
+antigen bundle globalias
 antigen bundle vi-mode
 
 antigen bundle timer

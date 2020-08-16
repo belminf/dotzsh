@@ -7,6 +7,20 @@ alias egrep='egrep --color=auto'
 alias rg='rg -S'
 alias tree='tree -C -I "__pycache__|*.pyc"'
 
+# Git
+alias ga='git add'
+alias gap='git add -p'
+alias gs='git st'
+alias gp='git push'
+alias gpu='git pull'
+alias gpf='git push -f'
+alias gc='git commit -m'
+alias gcm='git commend'
+alias gcmm='git commend -m'
+alias gl='git lg'
+alias gd='git diff'
+alias gdc='git diff --cached'
+
 # Watch with expansion
 # Ref: https://unix.stackexchange.com/questions/25327/watch-command-alias-expansion
 alias watch='watch '
