@@ -53,6 +53,7 @@ fi
 function ll() {
   LC_COLLATE=C $GNU_LS -lahF --group-directories-first --color=tty --hide="*.pyc" --hide="__pycache__" "$@"
 }
+unalias ll
 
 function vf() {
   nvim "$(rg --files -u | fzf -1 -q "$@")"
