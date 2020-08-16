@@ -110,6 +110,3 @@ function __rprompt {
 
   echo "$rprompt"
 }
-
-# Theming for plugins
-ZSH_COLORIZE_CHROMA_FORMATTER='terminal256'
