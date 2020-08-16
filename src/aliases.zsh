@@ -52,13 +52,6 @@ function ll() {
   LC_COLLATE=C $GNU_LS -lahF --group-directories-first --color=tty --hide="*.pyc" --hide="__pycache__" "$@"
 }
 
-function what() {
-  (
-    alias
-    declare -f
-  ) | $GNU_WHICH --tty-only --read-alias --read-functions --show-tilde --show-dot "$@"
-}
-
 function vf() {
   nvim "$(rg --files -u | fzf -1 -q "$@")"
 }
