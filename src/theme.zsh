@@ -89,12 +89,18 @@ function __aws_info_prompt() {
   fi
 }
 
+# vi mode
+MODE_INDICATOR="${PS_COLOR_GOOD}⏏%{${reset_color}%}"
+function __vi_info_prompt() {
+  vi_mode_prompt_info
+}
+
 # Right prompt
 function __rprompt {
   local current_sep=""
   local rprompt=""
 
-  for info_prompt in 'git' 'k8s' 'aws'; do
+  for info_prompt in 'vi' 'git' 'k8s' 'aws'; do
     current_info_prompt="$(__${info_prompt}_info_prompt)"
     if [ -n "$current_info_prompt" ]; then
       [ -n "$rprompt" ] && rprompt="$rprompt $RPROMPT_SEP "
@@ -104,3 +110,6 @@ function __rprompt {
 
   echo "$rprompt"
 }
+
+# Theming for plugins
+ZSH_COLORIZE_CHROMA_FORMATTER='terminal256'
