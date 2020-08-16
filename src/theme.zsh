@@ -27,9 +27,9 @@ function __git_info_prompt() {
     local git_status
 
     # Color
-    if [ "$GIT_CHANGED" -ne "0"  ] || [ "$GIT_CONFLICTS" -ne "0" ] || [ "$GIT_UNTRACKED" -ne "0" ]; then
+    if [ "$GIT_CHANGED" -ne "0"  ] || [ "$GIT_CONFLICTS" -ne "0" ] || [ "$GIT_UNTRACKED" -ne "0" ] || [ "$GIT_STAGED" -ne 0 ] || [[ "$GIT_AHEAD" -ne "0" && "$GIT_BEHIND" -ne "0" ]]; then
       git_status="$PS_COLOR_BAD"
-    elif [ "$GIT_STAGED" -ne "0" ]; then
+    elif [ "$GIT_AHEAD" -ne "0" ]; then
       git_status="$PS_COLOR_GOOD"
     else
       git_status="$PS_COLOR_SOSO"
