@@ -23,6 +23,7 @@ sudo chsh -s "$(brew --prefix)/bin/zsh" "$USER"
 
 ```
 git clone git@github.com:belminf/dotzsh.git ~/.zsh
+git submodule update --init --recursive
 ln -sf ~/.zsh/rc.zsh ~/.zshrc
 ln -sf ~/.zsh/inputrc ~/.inputrc
 ```
