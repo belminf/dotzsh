@@ -14,10 +14,6 @@ antigen bundle direnv
 antigen bundle globalias
 antigen bundle vi-mode
 
-antigen bundle timer
-TIMER_PRECISION=2
-TIMER_FORMAT="[%d] "
-
 # Must be after vi-mode
 # Ref: https://wiki.archlinux.org/index.php/Fzf
 antigen bundle fzf
@@ -43,6 +39,7 @@ antigen bundle zsh-users/zsh-history-substring-search
 
 antigen apply
 
+source ~/.zsh/src/timer.zsh
 source ~/.zsh/src/theme.zsh
 source ~/.zsh/src/options.zsh
 source ~/.zsh/src/aliases.zsh

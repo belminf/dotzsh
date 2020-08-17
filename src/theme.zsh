@@ -11,11 +11,18 @@ PS_TC_DOWN="%{$(echotc DO 1)%}"
 
 # Prompt variables
 PROMPT='
-${PS_COLOR_PRIMARY}%* ${PS_COLOR_SECONDARY}%3~ ${PS_COLOR_FAINT}%h%{$reset_color%}
+${PS_COLOR_PRIMARY}%* ${PS_COLOR_SECONDARY}%3~ ${PS_COLOR_FAINT}%h$(__last_timer)%{$reset_color%}
 %{%(?.${PS_COLOR_PRIMARY}.${PS_COLOR_BAD})%}$%{$reset_color%} '
 PROMPT2='${PS_COLOR_PRIMARY}>%{$reset_color%} '
 RPROMPT='${PS_TC_UP}$(__rprompt)${PS_TC_DOWN}'
 RPROMPT_SEP="${PS_COLOR_FAINT}⸗"
+
+# Command timer
+function __last_timer() {
+  local last_time="$(timer_last_duration_print)"
+  [ -n "$last_time" ] || return
+  echo -n "${PS_COLOR_FAINT} [last: ${last_time}]%{${reset_color}%}"
+}
 
 # Git
 # NOTE: Assumes git-prompt plugin
