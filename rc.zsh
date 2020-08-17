@@ -12,25 +12,25 @@ antigen bundle ripgrep
 antigen bundle golang
 antigen bundle direnv
 antigen bundle globalias
-antigen bundle vi-mode
 
-# Must be after vi-mode
-# Ref: https://wiki.archlinux.org/index.php/Fzf
-antigen bundle fzf
-
-antigen bundle colorize
 ZSH_COLORIZE_CHROMA_FORMATTER='terminal256'
+antigen bundle colorize
 
-antigen bundle zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(history match_prev_cmd)
 ZSH_AUTOSUGGEST_USE_ASYNC=1
+antigen bundle zsh-users/zsh-autosuggestions
+
+# fzf must be after vi-mode
+# Ref: https://wiki.archlinux.org/index.php/Fzf
+antigen bundle vi-mode
+antigen bundle fzf
 
 antigen bundle zsh-users/zsh-completions
 
 # Must be last plugin sourced (except for history-substring-search)
 # Ref: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
-antigen bundle zsh-users/zsh-syntax-highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Must be after syntax-highlighting
 # Ref: https://github.com/zsh-users/zsh-history-substring-search
