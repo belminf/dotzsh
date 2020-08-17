@@ -29,6 +29,7 @@ alias watch='watch '
 # Conditional aliases
 if hash nvim 2>/dev/null; then
   alias v='nvim'
+  alias vim='nvim'
 else
   alias v='vim'
 fi
