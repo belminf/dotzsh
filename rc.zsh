@@ -21,7 +21,6 @@ antigen bundle fzf
 antigen bundle colorize
 ZSH_COLORIZE_CHROMA_FORMATTER='terminal256'
 
-
 antigen bundle zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(history match_prev_cmd)
 ZSH_AUTOSUGGEST_USE_ASYNC=1

@@ -36,7 +36,7 @@ function __git_info_prompt() {
     local git_status
 
     # Color
-    if [ "$GIT_CHANGED" -ne "0"  ] || [ "$GIT_CONFLICTS" -ne "0" ] || [ "$GIT_UNTRACKED" -ne "0" ] || [ "$GIT_STAGED" -ne 0 ] || [[ "$GIT_AHEAD" -ne "0" && "$GIT_BEHIND" -ne "0" ]]; then
+    if [ "$GIT_CHANGED" -ne "0" ] || [ "$GIT_CONFLICTS" -ne "0" ] || [ "$GIT_UNTRACKED" -ne "0" ] || [ "$GIT_STAGED" -ne 0 ] || [[ $GIT_AHEAD -ne "0" && $GIT_BEHIND -ne "0" ]]; then
       git_status="$PS_COLOR_BAD"
     elif [ "$GIT_AHEAD" -ne "0" ]; then
       git_status="$PS_COLOR_GOOD"
@@ -46,15 +46,15 @@ function __git_info_prompt() {
 
     # Symbol(s)
     if [ "$GIT_BEHIND" -ne "0" ]; then
-	git_status="${git_status}${ZSH_THEME_GIT_PROMPT_BEHIND}${GIT_BEHIND}"
+      git_status="${git_status}${ZSH_THEME_GIT_PROMPT_BEHIND}${GIT_BEHIND}"
     fi
 
     if [ "$GIT_AHEAD" -ne "0" ]; then
-	git_status="${git_status}${ZSH_THEME_GIT_PROMPT_AHEAD}${GIT_AHEAD}"
+      git_status="${git_status}${ZSH_THEME_GIT_PROMPT_AHEAD}${GIT_AHEAD}"
     fi
 
     if [ "$GIT_BEHIND" -eq "0" ] && [ "$GIT_AHEAD" -eq "0" ]; then
-	git_status="${git_status}${ZSH_THEME_GIT_PROMPT_CLEAN}"
+      git_status="${git_status}${ZSH_THEME_GIT_PROMPT_CLEAN}"
     fi
 
     echo "$git_status ${PS_COLOR_RHS}${GIT_BRANCH}%{${reset_color}%}"
@@ -91,9 +91,9 @@ function __k8s_info_prompt() {
 
 # AWS
 function __aws_info_prompt() {
-  if [ -n "$AWS_DEFAULT_PROFILE"  ]; then
+  if [ -n "$AWS_DEFAULT_PROFILE" ]; then
     echo -n "${PS_COLOR_GOOD}aws/${PS_COLOR_RHS}${AWS_DEFAULT_PROFILE}"
-  elif [ -n "$AWS_PROFILE"  ]; then
+  elif [ -n "$AWS_PROFILE" ]; then
     echo -n "${PS_COLOR_GOOD}aws/${PS_COLOR_RHS}${AWS_PROFILE}"
   fi
 }
@@ -105,7 +105,7 @@ function __vi_info_prompt() {
 }
 
 # Right prompt
-function __rprompt {
+function __rprompt() {
   local current_sep=""
   local rprompt=""
 
