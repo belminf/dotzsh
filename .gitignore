@@ -1,2 +1,2 @@
-src/local.sh
-src/local-*.sh
+src/local.zsh
+src/local-*.zsh

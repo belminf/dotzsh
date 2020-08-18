@@ -43,3 +43,7 @@ source ~/.zsh/src/theme.zsh
 source ~/.zsh/src/options.zsh
 source ~/.zsh/src/aliases.zsh
 source ~/.zsh/src/ssh_agent.zsh
+source ~/.zsh/src/bash_completion.zsh
+
+# Local config
+source ~/.zsh/src/local.zsh 2>/dev/null
