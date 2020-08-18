@@ -11,7 +11,6 @@ antigen bundle kube-ps1
 antigen bundle ripgrep
 antigen bundle golang
 antigen bundle direnv
-antigen bundle globalias
 
 ZSH_COLORIZE_CHROMA_FORMATTER='terminal256'
 antigen bundle colorize
