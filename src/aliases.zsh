@@ -30,8 +30,10 @@ alias watch='watch '
 if hash nvim 2>/dev/null; then
   alias v='nvim'
   alias vim='nvim'
+  EDITOR=nvim
 else
   alias v='vim'
+  EDITOR=vim
 fi
 
 if hash bat 2>/dev/null; then
