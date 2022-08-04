@@ -1,2 +1,4 @@
 src/local.zsh
 src/local-*.zsh
+prezto
+prezto-contrib

@@ -37,12 +37,16 @@ antigen bundle zsh-users/zsh-history-substring-search
 
 antigen apply
 
+#zstyle ':vcs_info:*' enable "NONE"
+
 source ~/.zsh/src/timer.zsh
 source ~/.zsh/src/theme.zsh
 source ~/.zsh/src/options.zsh
 source ~/.zsh/src/aliases.zsh
 source ~/.zsh/src/ssh_agent.zsh
 source ~/.zsh/src/bash_completion.zsh
+source ~/.zsh/src/ruby.zsh
+source ~/.zsh/src/k8s.zsh
 
 # Local config
 source ~/.zsh/src/local.zsh 2>/dev/null
