@@ -22,6 +22,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 # fzf must be after vi-mode
 # Ref: https://wiki.archlinux.org/index.php/Fzf
 antigen bundle vi-mode
+export FZF_BASE="/opt/homebrew/opt/fzf"
 antigen bundle fzf
 
 antigen bundle zsh-users/zsh-completions

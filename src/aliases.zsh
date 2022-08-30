@@ -57,7 +57,7 @@ fi
 function ll() {
   LC_COLLATE=C $GNU_LS -lahF --group-directories-first --color=tty --hide="*.pyc" --hide="__pycache__" "$@"
 }
-unalias ll
+unalias ll 2>/dev/null
 
 function vf() {
   nvim "$(rg --files -u | fzf -1 -q "$@")"
@@ -93,4 +93,8 @@ function mkproj() {
 
 function cdtmp() {
   cd "$(mktemp -d)" || return
+}
+
+function subnet_vpc() {
+  aws ec2 describe-subnets --subnet-ids "$1" | jq -r '.Subnets[0].VpcId'
 }

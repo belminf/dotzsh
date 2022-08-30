@@ -15,8 +15,7 @@ sudo systemctl enable pkgfile-update.timer
 
 ```
 brew install coreutils gnu-sed gnu-which zsh git fzf direnv pipenv kubectx ripgrep bat gron git tree tldr
-grep -q "$(brew --prefix)/bin/zsh" /etc/shells || echo "$(brew --prefix)/bin/zsh" | sudo tee -a /etc/shells >/dev/null
-sudo chsh -s "$(brew --prefix)/bin/zsh" "$USER"
+/opt/homebrew/opt/fzf/install --key-bindings --completion --no-update-rc
 ```
 
 ### Setup

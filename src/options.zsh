@@ -21,4 +21,4 @@ typeset -U cdpath
 setopt auto_cd
 cdpath+=("${HOME}/projects")
 path+=("${HOME}/.local/bin")
-export PATH
+export PATH="$PATH:/opt/homebrew/bin"

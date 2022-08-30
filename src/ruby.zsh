@@ -1,1 +1,1 @@
-eval "$(rbenv init -)"
+hash rbenv && eval "$(rbenv init -)"
