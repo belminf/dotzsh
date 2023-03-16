@@ -51,3 +51,5 @@ source ~/.zsh/src/k8s.zsh
 
 # Local config
 source ~/.zsh/src/local.zsh 2>/dev/null
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
