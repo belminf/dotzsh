@@ -71,6 +71,10 @@ function vga() {
   nvim $(rg -l "$@" | tr '\n' ' ')
 }
 
+function vc() {
+  nvim $(git conflicted | tr '\n' ' ')
+}
+
 function clip() {
 
   # x11 - Arch

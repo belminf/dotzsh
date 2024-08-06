@@ -19,6 +19,6 @@ export LESS='-XRF'
 # PATHS
 typeset -U cdpath
 setopt auto_cd
-cdpath+=("${HOME}/projects")
+cdpath+=("${HOME}/projects" "$HOME")
 path+=("${HOME}/.local/bin")
-export PATH="$PATH:/opt/homebrew/bin"
+export PATH="/opt/homebrew/bin:$PATH"
