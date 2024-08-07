@@ -5,6 +5,7 @@ $hostname\
 $directory\
 $git_branch\
 $git_status\
+$custom\
 $aws\
 $gcloud\
 $kubernetes\
@@ -18,7 +19,7 @@ format='[$time]($style) '
 style='#a5adce bold'
 
 [directory]
-format="[$path]($style) [󰄾](#414559 dimmed) "
+format="[$path]($style) [󰄾](#414559 dimmed)[󰄾](#414559) "
 style="#c6d0f5 bold"
 truncate_to_repo=false
 
@@ -49,16 +50,22 @@ style="#e5c890 dimmed"
 symbol=""
 
 [gcloud]
-format="[$symbol $account]($style) "
-style="#81c8be dimmed"
+format="[$symbol $project]($style) "
+style="#8caaee dimmed"
 symbol=""
 
 [kubernetes]
 disabled=false
 format="[$symbol $context]($style) "
-symbol="󱃾"
-style="#8caaee dimmed"
+symbol=""
+style="#81c8be dimmed"
 
 [cmd_duration]
 format="[$duration]($style) "
 style="#f2d5cf dimmed"
+
+[custom.prompt]
+command="~/.zsh/local-prompt.sh"
+when=""" [ -f ~/.zsh/local-prompt.sh ] """
+format='[$output]($style) '
+style="#99d1db dimmed"
