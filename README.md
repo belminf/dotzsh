@@ -22,7 +22,7 @@ brew install coreutils gnu-sed gnu-which zsh git fzf direnv pipenv kubectx ripgr
 
 ```bash
 git clone git@github.com:belminf/dotzsh.git ~/.zsh
-git submodule update --remote --merge
+git submodule update --init --recursive
 ln -sf ~/.zsh/rc.zsh ~/.zshrc
 ln -sf ~/.zsh/inputrc ~/.inputrc
 ```
