@@ -29,11 +29,9 @@ plugins=(
   knife
   golang
   direnv
-  colorize
   vi-mode
   fzf
   terraform
-  tldr
   copyfile
   copypath
   kitchen
