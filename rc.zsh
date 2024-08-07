@@ -51,7 +51,7 @@ export STARSHIP_CONFIG="$HOME/.zsh/starship.toml"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_CTYPE=UTF-8
-eval "$(starship init zsh)"
+eval "$(PATH="$PATH:/opt/homebrew/bin/" starship init zsh)"
 
 # Personal configuration
 source ~/.zsh/src/options.zsh
