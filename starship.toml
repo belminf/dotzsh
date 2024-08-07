@@ -1,0 +1,64 @@
+format="""
+$time\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$aws\
+$gcloud\
+$kubernetes\
+$cmd_duration\
+$line_break\
+$character"""
+
+[time]
+disabled=false
+format='[$time]($style) '
+style='#a5adce bold'
+
+[directory]
+format="[$path]($style) [󰄾](#414559 dimmed) "
+style="#c6d0f5 bold"
+truncate_to_repo=false
+
+[character]
+success_symbol="[\\$](#85c1dc)"
+error_symbol="[\\$](#ea999c)"
+vimcmd_symbol="[❮](#99d1db)"
+
+[git_branch]
+format="[$symbol $branch]($style)"
+style="#f2d5cf dimmed"
+symbol=""
+
+[git_status]
+format=" [($modified$staged$ahead_behind$stashed )]($style)"
+style="#eebebe dimmed"
+modified=""
+staged=""
+stashed="≡"
+ahead=""
+behind=""
+diverged="󰹸"
+up_to_date="󰄬"
+
+[aws]
+format="[$symbol $profile]($style) "
+style="#e5c890 dimmed"
+symbol=""
+
+[gcloud]
+format="[$symbol $account]($style) "
+style="#81c8be dimmed"
+symbol=""
+
+[kubernetes]
+disabled=false
+format="[$symbol $context]($style) "
+symbol="󱃾"
+style="#8caaee dimmed"
+
+[cmd_duration]
+format="[$duration]($style) "
+style="#f2d5cf dimmed"
