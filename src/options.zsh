@@ -15,3 +15,6 @@ setopt auto_cd
 cdpath+=("${HOME}/projects" "$HOME")
 path+=("${HOME}/.local/bin")
 export PATH="/opt/homebrew/bin:$PATH"
+
+# Push line
+bindkey '^q' push-line-or-edit
