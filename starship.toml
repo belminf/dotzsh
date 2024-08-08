@@ -19,7 +19,7 @@ format='[$time]($style) '
 style='#a5adce bold'
 
 [directory]
-format="[$path]($style) [󰄾](#414559 dimmed)[󰄾](#414559) "
+format="[$path]($style)[ 󱗿 ](#414559 dimmed)"
 style="#c6d0f5 bold"
 truncate_to_repo=false
 
