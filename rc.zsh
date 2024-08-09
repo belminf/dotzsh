@@ -8,6 +8,7 @@ ZSH_CUSTOM=$HOME/.zsh/custom
 ZSH_AUTOSUGGEST_STRATEGY=(history match_prev_cmd)
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+VI_MODE_DISABLE_CLIPBOARD=true
 
 # Set up fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
