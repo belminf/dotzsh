@@ -46,13 +46,15 @@ plugins=(
 fpath+=${ZSH_CUSTOM}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 
-
 # Staship prompt configuration
 export STARSHIP_CONFIG="$HOME/.zsh/starship.toml"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_CTYPE=UTF-8
 eval "$(PATH="$PATH:/opt/homebrew/bin/" starship init zsh)"
+
+# Zoxide
+_evalcache zoxide init zsh --cmd cd
 
 # Personal configuration
 source ~/.zsh/src/options.zsh
