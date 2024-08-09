@@ -15,6 +15,15 @@ VI_MODE_DISABLE_CLIPBOARD=true
 export FZF_ALT_C_OPTS=" --walker-skip .git,node_modules,target --preview 'tree -C {}'"
 export FZF_CTRL_T_OPTS=" --walker-skip .git,node_modules,target --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 export FZF_COMPLETION_OPTS='--border --info=inline'
+export FZF_DEFAULT_OPTS='
+  --color=fg:#d0d0d0,fg+:#d0d0d0,bg:-1,bg+:#262626
+  --color=hl:#5f87af,hl+:#5fd7ff,info:#afaf87,marker:#87ff00
+  --color=prompt:#d7005f,spinner:#af5fff,pointer:#af5fff,header:#87afaf
+  --color=border:#262626,label:#aeaeae,query:#d9d9d9
+  --border="thinblock" --border-label="" --preview-window="border-double" --prompt="> "
+  --marker=">" --pointer="◆" --separator="─" --scrollbar="│"
+  --layout="reverse" --info="right"'
+
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
 }
