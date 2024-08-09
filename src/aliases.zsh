@@ -6,6 +6,7 @@ alias grep='grep --color'
 alias egrep='egrep --color=auto'
 alias rg='rg -S'
 alias tree='tree -C -I "__pycache__|*.pyc"'
+alias ll='eza -l -F auto --color=always --git --group-directories-first --all -all'
 
 # Watch with expansion
 # Ref: https://unix.stackexchange.com/questions/25327/watch-command-alias-expansion
@@ -37,12 +38,6 @@ if hash gwhich 2>/dev/null; then
 else
   GNU_WHICH='which'
 fi
-
-# Functions
-function ll() {
-  LC_COLLATE=C $GNU_LS -lahF --group-directories-first --color=tty --hide="*.pyc" --hide="__pycache__" "$@"
-}
-unalias ll 2>/dev/null
 
 function vf() {
   nvim "$(rg --files -u | fzf -1 -q "$@")"
