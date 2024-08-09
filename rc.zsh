@@ -23,11 +23,13 @@ _fzf_compgen_dir() {
 }
 
 plugins=(
+  evalcache
   aws
   gcloud
   gitfast
   git-auto-fetch
   knife
+  kubectl
   golang
   direnv
   vi-mode
@@ -39,7 +41,7 @@ plugins=(
   zsh-interactive-cd
   zsh-autosuggestions
   # Must be last, except for zsh-history-substring-search 
-  zsh-syntax-highlighting 
+  zsh-syntax-highlighting
 )
 fpath+=${ZSH_CUSTOM}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
@@ -56,7 +58,8 @@ eval "$(PATH="$PATH:/opt/homebrew/bin/" starship init zsh)"
 source ~/.zsh/src/options.zsh
 source ~/.zsh/src/aliases.zsh
 source ~/.zsh/src/ssh_agent.zsh
-source ~/.zsh/src/bash_completion.zsh
+# Disabling temporarily
+# source ~/.zsh/src/bash_completion.zsh
 source ~/.zsh/src/ruby.zsh
 source ~/.zsh/src/k8s.zsh
 

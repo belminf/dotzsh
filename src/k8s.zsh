@@ -9,26 +9,6 @@ fi
 # Only if kubectl exists
 if hash kubectl 2>/dev/null; then
 
-  # Setup completion
-  source <(kubectl completion zsh)
-  hash stern 2>/dev/null && source <(stern --completion=zsh)
-
-  # Add completion
-  #function add_completion() {
-  #local shell_cmd
-  #shell_cmd=$1
-
-  #if [[ $(type -t compopt) == "builtin" ]]; then
-  #complete -o default -F "_complete_alias" "$shell_cmd"
-  #else
-  #complete -o default -o nospace -F "_complete_alias" "$shell_cmd"
-  #fi
-  #}
-
-  ## Shortcuts
-  alias k='kubectl'
-  #add_completion k
-
   alias kg='kubectl get'
   #add_completion kg
 

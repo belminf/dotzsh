@@ -1,1 +1,1 @@
-hash rbenv && eval "$(rbenv init -)"
+hash rbenv && _evalcache rbenv init -
