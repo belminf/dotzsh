@@ -13,6 +13,7 @@ export LESS='-XRF'
 typeset -U cdpath
 setopt auto_cd
 cdpath+=("${HOME}/projects" "$HOME")
+add_cdpath_to_zoxide
 path+=("${HOME}/.local/bin")
 export PATH="/opt/homebrew/bin:$PATH"
 

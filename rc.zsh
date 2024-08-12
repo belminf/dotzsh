@@ -67,6 +67,15 @@ eval "$(PATH="$PATH:/opt/homebrew/bin/" starship init zsh)"
 fast-theme -q ~/.zsh/syntax-theme.ini
 
 # Zoxide
+function add_cdpath_to_zoxide() {
+  local pths = ()
+  for pth in $cdpath ; do
+    [[ -d "$pth" ]] && pths += ("${pth}"/*(/N))
+  done
+  if [[ ${#pths[@]} -gt 0 ]]; then
+    zoxide add "${pths[@]}"
+  fi
+}
 _evalcache zoxide init zsh --cmd cd
 
 # Personal configuration
