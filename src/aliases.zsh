@@ -66,3 +66,24 @@ function mkproj() {
 function cdtmp() {
   cd "$(mktemp -d)" || return
 }
+
+function dotfile() {
+  case "$1" in
+    pull)
+      for dotfile in ~/.zsh ~/.tmux ~/.vim; do
+        echo "$dotfile:"
+        git -C $dotfile pull
+        echo
+      done
+      ;;
+    st|status)
+      for dotfile in ~/.zsh ~/.tmux ~/.vim; do
+        echo "$dotfile:"
+        git -C $dotfile st
+        echo
+      done
+      ;;
+    *)
+      echo "No such command"
+  esac
+}
