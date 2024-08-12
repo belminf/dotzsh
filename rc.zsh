@@ -47,10 +47,11 @@ plugins=(
   copyfile
   copypath
   kitchen
+  colored-man-pages
   zsh-interactive-cd
   zsh-autosuggestions
   # Must be last, except for zsh-history-substring-search 
-  zsh-syntax-highlighting
+  fast-syntax-highlighting
 )
 fpath+=${ZSH_CUSTOM}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
@@ -61,6 +62,9 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_CTYPE=UTF-8
 eval "$(PATH="$PATH:/opt/homebrew/bin/" starship init zsh)"
+
+# Syntax highlighting
+fast-theme -q ~/.zsh/syntax-theme.ini
 
 # Zoxide
 _evalcache zoxide init zsh --cmd cd

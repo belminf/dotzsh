@@ -7,9 +7,9 @@
 [submodule "plugins/zsh-completions"]
 	path = custom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
-[submodule "plugins/zsh-syntax-highlighting"]
-	path = custom/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting
 [submodule "custom/plugins/evalcache"]
 	path = custom/plugins/evalcache
 	url = https://github.com/mroth/evalcache.git
+[submodule "custom/plugins/fast-syntax-highlighting"]
+	path = custom/plugins/fast-syntax-highlighting
+	url = https://github.com/zdharma-continuum/fast-syntax-highlighting
