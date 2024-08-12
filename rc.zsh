@@ -1,6 +1,10 @@
+# Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Oh-my-zsh configuration
 export ZSH=$HOME/.zsh/oh-my-zsh
-ZSH_THEME=""
 HYPHEN_INSENSITIVE="true"
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -10,7 +14,11 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 VI_MODE_DISABLE_CLIPBOARD=true
 
-# Set up fzf
+# Theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
+source ~/.zsh/p10k.zsh
+
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_ALT_C_OPTS=" --walker-skip .git,node_modules,target --preview 'tree -C {}'"
 export FZF_CTRL_T_OPTS=" --walker-skip .git,node_modules,target --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
@@ -55,13 +63,6 @@ plugins=(
 )
 fpath+=${ZSH_CUSTOM}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
-
-# Staship prompt configuration
-export STARSHIP_CONFIG="$HOME/.zsh/starship.toml"
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_CTYPE=UTF-8
-eval "$(PATH="$PATH:/opt/homebrew/bin/" starship init zsh)"
 
 # Syntax highlighting
 fast-theme -q ~/.zsh/syntax-theme.ini
