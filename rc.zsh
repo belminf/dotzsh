@@ -24,13 +24,14 @@ export FZF_ALT_C_OPTS=" --walker-skip .git,node_modules,target --preview 'tree -
 export FZF_CTRL_T_OPTS=" --walker-skip .git,node_modules,target --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 export FZF_COMPLETION_OPTS='--border --info=inline'
 export FZF_DEFAULT_OPTS='
-  --color=fg:#d0d0d0,fg+:#d0d0d0,bg:-1,bg+:#262626
-  --color=hl:#5f87af,hl+:#5fd7ff,info:#afaf87,marker:#87ff00
-  --color=prompt:#d7005f,spinner:#af5fff,pointer:#af5fff,header:#87afaf
-  --color=border:#262626,label:#aeaeae,query:#d9d9d9
-  --border="thinblock" --border-label="" --preview-window="border-double" --prompt="> "
+  --color=fg:#cdd6f4,fg+:#b4befe,bg:#11111b,bg+:#45475a
+  --color=hl:#89b4fa,hl+:#89dceb,info:#f5e0dc,marker:#94e2d5
+  --color=prompt:#cba6f7,spinner:#af5fff,pointer:#af5fff,header:#94e2d5
+  --color=gutter:#1e1e2e,border:#313244,separator:#313244,scrollbar:#b4befe
+  --color=preview-bg:#313244,label:#aeaeae,query:#cdd6f4,disabled:#842626
+  --border="sharp" --border-label="" --preview-window="border-double" --prompt=" "
   --marker=">" --pointer="◆" --separator="─" --scrollbar="│"
-  --layout="reverse" --info="right"'
+  --info="right"'
 
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
