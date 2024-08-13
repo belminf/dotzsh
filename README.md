@@ -7,14 +7,14 @@
 #### Arch
 
 ```bash
-yay -S --needed pkgfile zsh git fzf direnv python-pipenv kubectx ripgrep bat gron-bin git tree tldr fd zoxide eza vivid
+yay -S --needed pkgfile zsh git fzf direnv python-pipenv kubectx ripgrep bat gron-bin git tree tldr fd eza vivid
 sudo systemctl enable pkgfile-update.timer
 ```
 
 #### macOS
 
 ```bash
-brew install coreutils gnu-sed gnu-which zsh git fzf direnv pipenv kubectx ripgrep bat gron git tree tldr fd zoxide eza vivid
+brew install coreutils gnu-sed gnu-which zsh git fzf direnv pipenv kubectx ripgrep bat gron git tree tldr fd eza vivid
 /opt/homebrew/opt/fzf/install --key-bindings --completion --no-update-rc
 ```
 

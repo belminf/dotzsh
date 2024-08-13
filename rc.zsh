@@ -68,23 +68,6 @@ source $ZSH/oh-my-zsh.sh
 # Syntax highlighting
 fast-theme -q ~/.zsh/syntax-theme.ini
 
-# Zoxide
-function add_cdpath_to_zoxide() {
-  local pths = ()
-  for pth in $cdpath ; do
-    [[ -d "$pth" ]] && pths += ("${pth}"/*(/N))
-  done
-  if [[ ${#pths[@]} -gt 0 ]]; then
-    zoxide add "${pths[@]}"
-  fi
-}
-_evalcache zoxide init zsh --cmd cd
-function cd() {
-  __zoxide_z "$@"
-  # Fix get-fetch-all not launching
-  git-fetch-all
-}
-
 # Personal configuration
 source ~/.zsh/src/options.zsh
 source ~/.zsh/src/aliases.zsh
