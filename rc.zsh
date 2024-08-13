@@ -79,6 +79,11 @@ function add_cdpath_to_zoxide() {
   fi
 }
 _evalcache zoxide init zsh --cmd cd
+function cd() {
+  __zoxide_z "$@"
+  # Fix get-fetch-all not launching
+  git-fetch-all
+}
 
 # Personal configuration
 source ~/.zsh/src/options.zsh
