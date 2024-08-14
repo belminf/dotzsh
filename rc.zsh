@@ -70,6 +70,7 @@ fast-theme -q ~/.zsh/syntax-theme.ini
 
 # Personal configuration
 source ~/.zsh/src/options.zsh
+source ~/.zsh/src/colors.zsh
 source ~/.zsh/src/aliases.zsh
 source ~/.zsh/src/ssh_agent.zsh
 # Disabling temporarily
