@@ -20,13 +20,20 @@ export PATH="/opt/homebrew/bin:$PATH"
 bindkey '^q' push-line-or-edit
 
 # ls colors
+#
 # Ref: https://manpages.debian.org/testing/eza/eza_colors.5.en.html
-# export LS_COLORS="$(vivid generate snazzy)"
-EZA_COLORS=""
-# Directory
-EZA_COLORS+="di=38;5;39:"
-# Regular files
-EZA_COLORS+="fi=38;5;255:"
+#
+# format code:
+# 01 - bold
+# 04 - underline
+# 05 - flashing
+# 07 -reverse
+#
+# Color codes: for i in {0..255}; do printf '\e[38;5;%dm%3d ' $i $i; (((i+3) % 18)) || printf '\e[0m\n'; done
+
+LS_COLORS=""
+EZA_COLORS="reset:"
+
 # File date
 EZA_COLORS+="da=38;5;151:"
 # My user
@@ -51,14 +58,24 @@ EZA_COLORS+="nm=38;5;250:"
 EZA_COLORS+="ng=38;5;255:"
 # Size > 1TB
 EZA_COLORS+="nt=38;5;255:"
-# Document
-EZA_COLORS+="do=38;5;68:*.md=38;5;68:"
-# Compressed file
-EZA_COLORS+="co=38;5;222:*.zip=38;5;222:"
-# Temporary files
-EZA_COLORS+="tm=38;5;193:cm=38;5;193:.*=38;5;193:"
-# Scripts and code
-EZA_COLORS+="co=38;5;121:ex=38;5;121:*.sh=38;5;121:*.zsh=38;5;121:"
 # Git
 EZA_COLORS+="ga=38;5;105:gm=38;5;105:gd=38;5;105:gv=38;5;105:gt=38;5;105:gi=38;5;105:gc=38;5;105:"
+
+# Directory
+EZA_COLORS+="di=38;5;39:"
+# Temporary files
+EZA_COLORS+="tm=38;5;242:cm=38;5;242:.*=38;5;242:"
+# Scripts and code
+EZA_COLORS+="co=38;5;121:ex=38;5;121:*.sh=38;5;121:*.zsh=38;5;121:"
+# Named pipes
+EZA_COLORS+="pi=01;38;5;34:"
+# Block devices
+EZA_COLORS+="bd=01;38;5;87:"
+# Character device
+EZA_COLORS+="cd=01;38;5;117:"
+# Symlinks
+EZA_COLORS+="ln=04;38;5;87:or=04;38;5;87:"
+# # Broken symlink
+EZA_COLORS+="bO=07;01;38;5;124:"
+
 export EZA_COLORS
