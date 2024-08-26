@@ -7,5 +7,5 @@ if [ -f "${HOME}/.zsh/src/local-completions.zsh" ]; then
 fi
 
 for compfile in $BASH_COMPLETIONS; do
-    source "$compfile"
+  source "$compfile"
 done

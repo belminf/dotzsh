@@ -59,7 +59,7 @@ plugins=(
   colored-man-pages
   zsh-interactive-cd
   zsh-autosuggestions
-  # Must be last, except for zsh-history-substring-search 
+  # Must be last, except for zsh-history-substring-search
   fast-syntax-highlighting
 )
 fpath+=${ZSH_CUSTOM}/plugins/zsh-completions/src
