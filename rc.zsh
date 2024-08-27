@@ -52,6 +52,7 @@ plugins=(
   direnv
   vi-mode
   fzf
+  fzf-tab
   terraform
   copyfile
   copypath
@@ -64,6 +65,13 @@ plugins=(
 )
 fpath+=${ZSH_CUSTOM}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
+
+# fzf zsh-completion
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:*' switch-group '<' '>'
 
 # Syntax highlighting
 fast-theme -q ~/.zsh/syntax-theme.ini

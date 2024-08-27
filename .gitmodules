@@ -16,3 +16,6 @@
 [submodule "custom/themes/powerlevel10k"]
 	path = custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "custom/plugins/fzf-tab"]
+	path = custom/plugins/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab
