@@ -52,7 +52,7 @@ plugins=(
   direnv
   vi-mode
   fzf
-  fzf-tab
+  #fzf-tab
   terraform
   copyfile
   copypath
