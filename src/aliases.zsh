@@ -7,6 +7,7 @@ alias egrep='egrep --color=auto'
 alias rg='rg -S'
 alias tree='tree -C -I "__pycache__|*.pyc"'
 alias ll='eza -l -F auto --color=always --git --group-directories-first --all -all'
+alias gs='git st'
 
 # Watch with expansion
 # Ref: https://unix.stackexchange.com/questions/25327/watch-command-alias-expansion
