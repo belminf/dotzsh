@@ -2,6 +2,9 @@
 export MANPATH="/usr/local/man:$MANPATH"
 export ARCHFLAGS="-arch $(uname -m)"
 
+# vi mode
+bindkey -v
+
 # Shell options
 set -o noclobber
 
@@ -18,3 +21,4 @@ export PATH="/opt/homebrew/bin:$PATH"
 
 # Push line
 bindkey '^q' push-line-or-edit
+
