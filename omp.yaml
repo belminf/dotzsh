@@ -61,22 +61,26 @@ secondary_prompt:
     - "{{if gt .Code 0}}p:red{{end}}"
     - "{{if eq .Code 0}}p:fg{{end}}"
   template: "❯❯ "
-# tooltips:
-#   - type: aws
-#     tips:
-#       - aws
-#     style: plain
-#     template: " \ue7ad {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} "
-#     properties:
-#       display_default: true
-#     background: p:orange
-#     foreground: p:white
-#   - type: az
-#     tips:
-#       - az
-#     style: plain
-#     template: " \uebd8 {{ .Name }} "
-#     properties:
-#       display_default: true
-#     background: p:blue
-#     foreground: p:white
+tooltips:
+  - type: aws
+    tips:
+      - aws
+      - terraform
+    style: plain
+    template: " {{ .Profile }}"
+    properties:
+      display_default: true
+    foreground: p:aqua
+  - type: kubectl
+    tips:
+      - k
+      - kubectl
+    style: plain
+    foreground: p:aqua
+    template: " {{.Context}}{{if .Namespace}}/{{.Namespace}}{{end}} "
+  - type: gcp
+    tips:
+      - gcp
+    style: plain
+    foreground: p:aqua
+    template: " {{.Project}} "

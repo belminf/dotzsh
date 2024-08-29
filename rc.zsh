@@ -60,9 +60,6 @@ plugins=(
 fpath+=${ZSH_CUSTOM}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 
-# OMP  prompt
-_evalcache oh-my-posh init zsh --config "$HOME/.zsh/omp.yaml"
-
 # fzf zsh-completion
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
@@ -85,3 +82,6 @@ source ~/.zsh/src/k8s.zsh
 
 # Local config
 source ~/.zsh/src/local.zsh 2>/dev/null
+
+# OMP  prompt
+_evalcache oh-my-posh init zsh --config "$HOME/.zsh/omp.yaml"
