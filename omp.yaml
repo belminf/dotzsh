@@ -43,7 +43,7 @@ blocks:
         shell: sh
         style: plain
         properties:
-          command: "$HOME/.zsh/local-prompt.sh"
+          command: "$HOME/.zsh/local-prompt.sh 2>/dev/null || true"
         foreground: p:blue
       - type: executiontime
         style: plain
