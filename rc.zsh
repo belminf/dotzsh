@@ -1,9 +1,9 @@
 # Oh-my-zsh configuration
-export ZSH=$HOME/.zsh/oh-my-zsh
+OMZ=$HOME/.zsh/oh-my-zsh
+ZSH_CUSTOM=$HOME/.zsh/custom
 HYPHEN_INSENSITIVE="true"
 zstyle ':omz:update' mode reminder # just remind me to update when it's time
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-ZSH_CUSTOM=$HOME/.zsh/custom
 ZSH_AUTOSUGGEST_STRATEGY=(history match_prev_cmd)
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
@@ -37,7 +37,6 @@ plugins=(
   kubectl
   golang
   direnv
-  fzf
   fzf-tab
   terraform
   copyfile
@@ -48,13 +47,12 @@ plugins=(
   fast-syntax-highlighting
 )
 fpath+=${ZSH_CUSTOM}/plugins/zsh-completions/src
-source $ZSH/oh-my-zsh.sh
+source "${OMZ}/oh-my-zsh.sh"
 
 # fzf zsh-completion
+_evalcache fzf --zsh
 zstyle ':completion:*:git-checkout:*' sort false
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
-# zstyle ':fzf-tab:*' switch-group '<' '>'
 
 # Syntax highlighting
 fast-theme -q ~/.zsh/syntax-theme.ini
@@ -69,8 +67,8 @@ source ~/.zsh/src/ssh_agent.zsh
 source ~/.zsh/src/ruby.zsh
 source ~/.zsh/src/k8s.zsh
 
+# OMP prompt
+_evalcache oh-my-posh init zsh --config "$HOME/.zsh/omp.yaml"
+
 # Local config
 source ~/.zsh/src/local.zsh 2>/dev/null
-
-# OMP  prompt
-_evalcache oh-my-posh init zsh --config "$HOME/.zsh/omp.yaml"

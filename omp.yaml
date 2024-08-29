@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 
 version: 2
-final_space: true
-console_title_template: "{{ .Shell }} in {{ .Folder }}"
+final_space: false
+enable_cursor_positioning: false
 palette:
   red: "#cc241d"
   green: "#b8bb26"
@@ -34,13 +34,16 @@ blocks:
           branch_icon: " "
           branch_max_length: 25
           commit_icon: "@"
+          full_branch_path: true
           fetch_status: true
         foreground: p:purple
       - type: command
         template: "{{ .Output }} "
+        interpret: false
+        shell: sh
         style: plain
         properties:
-          command: '[ -x "$HOME/.zsh/local-prompt.sh" ] && "$HOME/.zsh/local-prompt.sh"'
+          command: "$HOME/.zsh/local-prompt.sh"
         foreground: p:blue
       - type: executiontime
         style: plain
@@ -57,7 +60,7 @@ blocks:
         foreground_templates:
           - "{{if eq .Code 0}}white{{end}}"
           - "{{if gt .Code 0}}p:red{{end}}"
-        template: ❯
+        template: "❯ "
     newline: true
 transient_prompt:
   foreground_templates:
