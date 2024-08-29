@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version: 2
+final_space: true
+console_title_template: "{{ .Shell }} in {{ .Folder }}"
+palette:
+  red: "#cc241d"
+  green: "#b8bb26"
+  yellow: "#fabd2f"
+  orange: "#d65d0e"
+  blue: "#83a698"
+  purple: "#d3869b"
+  aqua: "#8ec07c"
+  gray: "#a89984"
+  fg: "#ebdbb2"
+  white: "#fbf1c7"
+blocks:
+  - type: prompt
+    alignment: left
+    segments:
+      - type: path
+        style: plain
+        template: "\n{{ path .Path .Location }} "
+        newline: true
+        properties:
+          style: full
+        foreground: p:fg
+      - type: git
+        style: plain
+        template: "{{ .HEAD }} {{ if .Staging.Changed }}{{ end }}{{ if .Working.Changed }}!{{ end }}{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}{{ if gt .StashCount 0 }}{{ end }} "
+        properties:
+          branch_icon: " "
+          branch_max_length: 25
+          commit_icon: "@"
+          fetch_status: true
+        foreground: p:blue
+      - type: executiontime
+        style: plain
+        template: "{{ .FormattedMs }} "
+        properties:
+          threshold: 1000
+        foreground: p:purple
+    overflow: hidden
+  - type: prompt
+    alignment: left
+    segments:
+      - type: text
+        style: plain
+        foreground_templates:
+          - "{{if eq .Code 0}}white{{end}}"
+          - "{{if gt .Code 0}}p:red{{end}}"
+        template: ❯
+    newline: true
+transient_prompt:
+  foreground_templates:
+    - "{{if gt .Code 0}}p:red{{end}}"
+    - "{{if eq .Code 0}}p:fg{{end}}"
+  template: "\n{{ now | date \"15:04:05\" }}❯ "
+secondary_prompt:
+  foreground_templates:
+    - "{{if gt .Code 0}}p:red{{end}}"
+    - "{{if eq .Code 0}}p:fg{{end}}"
+  template: "❯❯ "
+# tooltips:
+#   - type: aws
+#     tips:
+#       - aws
+#     style: plain
+#     template: " \ue7ad {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} "
+#     properties:
+#       display_default: true
+#     background: p:orange
+#     foreground: p:white
+#   - type: az
+#     tips:
+#       - az
+#     style: plain
+#     template: " \uebd8 {{ .Name }} "
+#     properties:
+#       display_default: true
+#     background: p:blue
+#     foreground: p:white

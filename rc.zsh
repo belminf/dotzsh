@@ -1,8 +1,3 @@
-# Powerlevel10k instant prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Oh-my-zsh configuration
 export ZSH=$HOME/.zsh/oh-my-zsh
 HYPHEN_INSENSITIVE="true"
@@ -12,11 +7,10 @@ ZSH_CUSTOM=$HOME/.zsh/custom
 ZSH_AUTOSUGGEST_STRATEGY=(history match_prev_cmd)
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-VI_MODE_DISABLE_CLIPBOARD=true
+ZSH_THEME=""
 
-# Theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
-source ~/.zsh/p10k.zsh
+# TODO Delete if not using vi-mode
+# VI_MODE_DISABLE_CLIPBOARD=true
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -50,9 +44,9 @@ plugins=(
   kubectl
   golang
   direnv
-  vi-mode
+  # vi-mode
   fzf
-  #fzf-tab
+  fzf-tab
   terraform
   copyfile
   copypath
@@ -65,6 +59,9 @@ plugins=(
 )
 fpath+=${ZSH_CUSTOM}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
+
+# OMP  prompt
+_evalcache oh-my-posh init zsh --config "$HOME/.zsh/omp.yaml"
 
 # fzf zsh-completion
 zstyle ':completion:*:git-checkout:*' sort false
