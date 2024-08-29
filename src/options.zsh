@@ -4,6 +4,31 @@ export ARCHFLAGS="-arch $(uname -m)"
 
 # vi mode
 bindkey -v
+export KEYTIMEOUT=1
+
+# Cursor management
+# Ref: https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52
+function zle-keymap-select {
+
+  # Cursor for command mode
+  if [[ ${KEYMAP} == vicmd ]] ||
+    [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+
+  # Everything else
+  elif [[ ${KEYMAP} == main ]] ||
+    [[ ${KEYMAP} == viins ]] ||
+    [[ ${KEYMAP} = '' ]] ||
+    [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+  zle -K viins
+  echo -ne "\e[5 q"
+}
+zle -N zle-line-init
 
 # Shell options
 set -o noclobber
@@ -21,4 +46,3 @@ export PATH="/opt/homebrew/bin:$PATH"
 
 # Push line
 bindkey '^q' push-line-or-edit
-

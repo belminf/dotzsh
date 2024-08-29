@@ -9,9 +9,6 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 ZSH_THEME=""
 
-# TODO Delete if not using vi-mode
-# VI_MODE_DISABLE_CLIPBOARD=true
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_ALT_C_OPTS=" --walker-skip .git,node_modules,target --preview 'tree -C {}'"
@@ -44,7 +41,6 @@ plugins=(
   kubectl
   golang
   direnv
-  # vi-mode
   fzf
   fzf-tab
   terraform
@@ -52,8 +48,6 @@ plugins=(
   copypath
   kitchen
   colored-man-pages
-  zsh-interactive-cd
-  zsh-autosuggestions
   # Must be last, except for zsh-history-substring-search
   fast-syntax-highlighting
 )

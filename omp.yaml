@@ -20,26 +20,32 @@ blocks:
     segments:
       - type: path
         style: plain
-        template: "\n{{ path .Path .Location }} "
+        template: "\n{{ .Path }} "
         newline: true
         properties:
           style: full
         foreground: p:fg
       - type: git
         style: plain
-        template: "{{ .HEAD }} {{ if .Staging.Changed }}{{ end }}{{ if .Working.Changed }}!{{ end }}{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}{{ if gt .StashCount 0 }}{{ end }} "
+        template: "{{ .HEAD }} {{ if .Staging.Changed }}{{ end }}{{ if .Working.Changed }}!{{ end }}{{ if gt .Working.Untracked 0 }}?{{ end }}{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}{{ if gt .StashCount 0 }}{{ end }} "
         properties:
           branch_icon: " "
           branch_max_length: 25
           commit_icon: "@"
           fetch_status: true
+        foreground: p:purple
+      - type: command
+        template: "{{ .Output }} "
+        style: plain
+        properties:
+          command: '[ -x "$HOME/.zsh/local-prompt.sh" ] && "$HOME/.zsh/local-prompt.sh"'
         foreground: p:blue
       - type: executiontime
         style: plain
         template: "{{ .FormattedMs }} "
         properties:
           threshold: 1000
-        foreground: p:purple
+        foreground: p:gray
     overflow: hidden
   - type: prompt
     alignment: left
