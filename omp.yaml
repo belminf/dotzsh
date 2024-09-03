@@ -4,10 +4,8 @@ version: 2
 final_space: false
 enable_cursor_positioning: false
 palette:
+  # Ref, gruvbox: https://github.com/morhetz/gruvbox
   red: "#cc241d"
-  green: "#b8bb26"
-  yellow: "#fabd2f"
-  orange: "#d65d0e"
   blue: "#83a698"
   purple: "#d3869b"
   aqua: "#8ec07c"
