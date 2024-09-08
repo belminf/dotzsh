@@ -4,6 +4,7 @@ export ARCHFLAGS="-arch $(uname -m)"
 
 # vi mode
 bindkey -v
+bindkey -M vicmd v edit-command-line
 export KEYTIMEOUT=1
 
 # Cursor management
