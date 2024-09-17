@@ -40,10 +40,18 @@ export LESS='-XRF'
 
 # PATHS
 typeset -U cdpath
-setopt auto_cd
 cdpath+=("${HOME}/projects" "$HOME")
 path+=("${HOME}/.local/bin")
 export PATH="/opt/homebrew/bin:$PATH"
 
+setopt auto_cd
+setopt extendedglob
+setopt nomatch
+setopt interactive_comments
+
 # Push line
 bindkey '^q' push-line-or-edit
+
+# Disable CTRL-S
+stty stop undef
+stty start undef

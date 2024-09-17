@@ -1,4 +1,14 @@
-# ls colors
+# OMP prompt
+_evalcache oh-my-posh init zsh --config "$HOME/.zsh/omp.yaml"
+
+# Syntax highlighting
+fast-theme -q ~/.zsh/syntax-theme.ini
+
+# Dircolors for completions really
+_evalcache dircolors
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# eza colors
 #
 # Ref: https://manpages.debian.org/testing/eza/eza_colors.5.en.html
 #
@@ -10,7 +20,6 @@
 #
 # Color codes: for i in {0..255}; do printf '\e[38;5;%dm%3d ' $i $i; (((i+3) % 18)) || printf '\e[0m\n'; done
 
-LS_COLORS=""
 EZA_COLORS="reset:"
 
 # File date
@@ -31,7 +40,6 @@ EZA_COLORS+="ur=38;5;216:uw=38;5;216:ux=38;5;216:ue=38;5;216:"
 EZA_COLORS+="gr=38;5;215:gw=38;5;215:gx=38;5;215:"
 # Others RWX
 EZA_COLORS+="tr=38;5;209:tw=38;5;209:tx=38;5;209:"
-
 # Size <1KB
 EZA_COLORS+="nb=38;5;243:"
 # Size < 1MB
