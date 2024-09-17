@@ -55,3 +55,17 @@ bindkey '^q' push-line-or-edit
 # Disable CTRL-S
 stty stop undef
 stty start undef
+
+# CTRL-B for buffer copy
+copybuffer () {
+  if builtin which clipcopy &>/dev/null; then
+    printf "%s" "$BUFFER" | clipcopy
+  else
+    zle -M "clipcopy not found. Please make sure you have Oh My Zsh installed correctly."
+  fi
+}
+
+zle -N copybuffer
+
+bindkey -M viins "^B" copybuffer
+bindkey -M vicmd "^B" copybuffer
