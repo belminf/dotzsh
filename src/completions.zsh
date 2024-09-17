@@ -1,9 +1,12 @@
 # Load completions
 autoload -Uz compinit && compinit
-
-# Competion menu
 zmodload -i zsh/complist
+
+# Use menu instead of blind completion
 zstyle ':completion:*' menu select
+
+# Submit on first enter
+bindkey -M menuselect '^M' .accept-line
 
 # Complete options
 setopt menu_complete
