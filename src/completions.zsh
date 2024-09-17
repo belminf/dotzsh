@@ -35,12 +35,14 @@ _fzf_compgen_dir() {
 _evalcache fzf --zsh
 
 # Application specific
-source "$CLOUDSDK_HOME/completion.zsh.inc"
+
+# GCP
+#source "$CLOUDSDK_HOME/completion.zsh.inc"
 
 # AWS
 # Ref: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html
-complete -C 'aws_completer' aws
+#complete -C 'aws_completer' aws
 
-# TODO
 # Golang
+
 # Knife
