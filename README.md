@@ -1,24 +1,22 @@
 # zsh config
 
-## Install
+## Dependencies
 
-### OS
-
-#### Arch
+### Arch
 
 ```bash
 yay -S --needed pkgfile zsh git fzf direnv python-pipenv kubectx ripgrep bat gron-bin git tree tldr fd eza oh-my-posh
 sudo systemctl enable pkgfile-update.timer
 ```
 
-#### macOS
+### macOS
 
 ```bash
 brew install coreutils gnu-sed gnu-which zsh git fzf direnv pipenv kubectx ripgrep bat gron git tree tldr fd eza oh-my-posh
 /opt/homebrew/opt/fzf/install --key-bindings --completion --no-update-rc
 ```
 
-### Setup
+## Setup
 
 ```bash
 git clone git@github.com:belminf/dotzsh.git ~/.zsh
@@ -27,7 +25,7 @@ ln -sf ~/.zsh/rc.zsh ~/.zshrc
 ln -sf ~/.zsh/inputrc ~/.inputrc
 ```
 
-### Update
+## Update
 
 ```bash
 git submodule update --remote
@@ -37,4 +35,5 @@ git submodule update --remote
 
 - <kbd>Ctrl</kbd> <kbd>T</kbd>: Find a file
 - <kbd>Ctrl</kbd> <kbd>R</kbd>: Search history
-- <kbd>Alt</kbd> <kbd>C</kbd>: Fuzzy search for `cd`
+- <kbd>Ctrl</kbd> <kbd>Q</kbd>: Push line till next prompt (e.g., forgot to run a different command first)
+- <kbd>Ctrl</kbd> <kbd>B</kbd>: Copy what is on the command line buffer
