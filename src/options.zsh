@@ -46,7 +46,6 @@ cdpath+=("${HOME}/projects" "$HOME")
 path+=("${HOME}/.local/bin")
 export PATH="/opt/homebrew/bin:$PATH"
 
-setopt auto_cd
 setopt extendedglob
 setopt nomatch
 setopt interactive_comments
