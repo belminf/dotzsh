@@ -3,6 +3,8 @@ export MANPATH="/usr/local/man:$MANPATH"
 export ARCHFLAGS="-arch $(uname -m)"
 
 # vi mode
+autoload -U edit-command-line
+zle -N edit-command-line
 bindkey -v
 bindkey -M vicmd v edit-command-line
 export KEYTIMEOUT=1
