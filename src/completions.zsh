@@ -1,3 +1,6 @@
+# Bug fix for ! in empty line completions
+[ -f /usr/share/zsh/functions/Completion/Zsh/_autocd ] && sudo rm /usr/share/zsh/functions/Completion/Zsh/_autocd
+
 # Load completions
 autoload -Uz compinit && compinit
 zmodload -i zsh/complist
