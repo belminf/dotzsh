@@ -44,7 +44,7 @@ _evalcache fzf --zsh
 # Application specific
 
 # GCP
-source "$CLOUDSDK_ROOT_DIR/completion.zsh.inc"
+source "${CLOUDSDK_ROOT_DIR:-$CLOUDSDK_HOME}/completion.zsh.inc"
 
 # AWS
 # Ref: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html
