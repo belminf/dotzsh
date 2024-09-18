@@ -1,8 +1,9 @@
-# Bug fix for ! in empty line completions
-[ -f /usr/share/zsh/functions/Completion/Zsh/_autocd ] && sudo rm /usr/share/zsh/functions/Completion/Zsh/_autocd
-
 # Load completions
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 zmodload -i zsh/complist
 
 # Use menu instead of blind completion
@@ -43,12 +44,9 @@ _evalcache fzf --zsh
 # Application specific
 
 # GCP
-#source "$CLOUDSDK_HOME/completion.zsh.inc"
+source "$CLOUDSDK_ROOT_DIR/completion.zsh.inc"
 
 # AWS
 # Ref: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html
-#complete -C 'aws_completer' aws
-
-# Golang
-
-# Knife
+autoload bashcompinit && bashcompinit
+complete -C 'aws_completer' aws
