@@ -1,12 +1,16 @@
-source ~/.zsh/src/history.zsh
-source ~/.zsh/src/plugins.zsh
-source ~/.zsh/src/completions.zsh
-source ~/.zsh/src/options.zsh
-source ~/.zsh/src/clipboard.zsh
-source ~/.zsh/src/aliases.zsh
-source ~/.zsh/src/ssh_agent.zsh
-source ~/.zsh/src/ruby.zsh
-source ~/.zsh/src/k8s.zsh
-source ~/.zsh/src/git-auto-fetch.zsh
-source ~/.zsh/src/theme.zsh
-source ~/.zsh/src/local.zsh 2>/dev/null
+SRC="$HOME/.zsh/src"
+
+source "$SRC/history.zsh"
+source "$SRC/plugins.zsh"
+source "$SRC/completions.zsh"
+source "$SRC/options.zsh"
+source "$SRC/clipboard.zsh"
+source "$SRC/functions.zsh"
+source "$SRC/aliases.zsh"
+source "$SRC/ssh_agent.zsh"
+source "$SRC/ruby.zsh"
+source "$SRC/k8s.zsh"
+source "$SRC/git-auto-fetch.zsh"
+source "$SRC/theme.zsh"
+
+source "$SRC/local.zsh" 2>/dev/null

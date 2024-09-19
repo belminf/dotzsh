@@ -7,17 +7,9 @@ else
 fi
 
 alias kg='kubectl get'
-#add_completion kg
-
 alias kga='kubectl get --all-namespaces'
-#add_completion kga
-
-## Context
 alias kc='kubectx'
-#add_completion kc
-
 alias kn='kubens'
-#add_completion kn
 
 ### Grep shortcuts
 function __kgrep() {

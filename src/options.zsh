@@ -1,16 +1,14 @@
 # Environment
 export MANPATH="/usr/local/man:$MANPATH"
 export ARCHFLAGS="-arch $(uname -m)"
+export PAGER="$(command -v less)"
+export LESS='-XRF'
 
 # Shell options
 set -o noclobber
 setopt extendedglob
 setopt nomatch
 setopt interactive_comments
-
-# Paging
-export PAGER="$(command -v less)"
-export LESS='-XRF'
 
 # PATHS
 typeset -U cdpath
@@ -57,7 +55,7 @@ stty stop undef
 stty start undef
 
 # CTRL-B for buffer copy
-copybuffer () {
+function copybuffer {
   if builtin which clipcopy &>/dev/null; then
     printf "%s" "$BUFFER" | clipcopy
   else
