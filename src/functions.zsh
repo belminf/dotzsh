@@ -17,7 +17,7 @@ function vf() {
 }
 
 function vg() {
-  nvim "$(rg -l "$@" | tr '\n' ' ')"
+  nvim $(rg -l "$@" | tr '\n' ' ')
 }
 
 function vc() {
