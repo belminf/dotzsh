@@ -6,6 +6,7 @@ else
   GNU_AWK='awk'
 fi
 
+alias k='kubectl'
 alias kg='kubectl get'
 alias kga='kubectl get --all-namespaces'
 alias kc='kubectx'
