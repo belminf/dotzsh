@@ -27,7 +27,7 @@ blocks:
         style: plain
         templates:
           - "{{ .HEAD }} "
-          - "{{ if .Staging.Changed }}{{ end }}{{ if .Working.Changed }}!{{ end }}{{ if gt .Working.Untracked 0 }}?{{ end }}{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}{{ if gt .StashCount 0 }}{{ end }} "
+          - "{{ if .Staging.Changed }}{{ end }}{{ if gt .Working.Untracked 0 }}?{{ else if .Working.Changed }}!{{ end }}{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}{{ if gt .StashCount 0 }}{{ end }} "
         properties:
           branch_icon: " "
           branch_max_length: 25
