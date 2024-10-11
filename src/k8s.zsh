@@ -1,5 +1,7 @@
 #!/bin/bash
 
+_evalcache kubectl completion zsh
+
 if hash gawk 2>/dev/null; then
   GNU_AWK='gawk'
 else
