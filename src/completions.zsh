@@ -44,7 +44,7 @@ _evalcache fzf --zsh
 # Application specific
 
 # GCP
-source "${CLOUDSDK_ROOT_DIR:-/opt/homebrew/share/google-cloud-sdk}/completion.zsh.inc"
+source "${CLOUDSDK_ROOT_DIR:-/opt/homebrew/share/google-cloud-sdk}/completion.zsh.inc" 2>/dev/null
 
 # AWS
 # Ref: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html

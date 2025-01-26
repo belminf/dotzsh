@@ -14,7 +14,7 @@ setopt interactive_comments
 typeset -U cdpath
 cdpath+=("${HOME}/projects" "$HOME")
 path+=("${HOME}/.local/bin")
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH="${HOME}/.local/bin:/opt/homebrew/bin:$PATH"
 
 # vi mode
 autoload -U edit-command-line
