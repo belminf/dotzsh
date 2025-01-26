@@ -1,95 +1,95 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-
-version: 2
-final_space: false
-enable_cursor_positioning: false
+version: 3
 palette:
-  # Ref, gruvbox: https://github.com/morhetz/gruvbox
-  red: "#cc241d"
-  blue: "#83a698"
-  purple: "#d3869b"
   aqua: "#8ec07c"
-  gray: "#a89984"
+  blue: "#83a698"
   fg: "#ebdbb2"
+  gray: "#a89984"
+  purple: "#d3869b"
+  red: "#cc241d"
   white: "#fbf1c7"
+secondary_prompt:
+  template: "❯❯ "
+  foreground_templates:
+    - "{{if gt .Code 0}}p:red{{end}}"
+    - "{{if eq .Code 0}}p:fg{{end}}"
+transient_prompt:
+  template: "\n{{ now | date \"15:04:05\" }}❯ "
+  foreground_templates:
+    - "{{if gt .Code 0}}p:red{{end}}"
+    - "{{if eq .Code 0}}p:fg{{end}}"
 blocks:
   - type: prompt
     alignment: left
+    overflow: hidden
     segments:
-      - type: path
-        style: plain
-        template: "\n{{ .Path }} "
-        newline: true
-        properties:
+      - properties:
+          cache_duration: none
           style: full
+        template: "\n{{ .Path }} "
         foreground: p:fg
-      - type: git
+        type: path
+        style: plain
+        newline: true
+      - properties:
+          branch_icon: "\uf126 "
+          branch_max_length: 25
+          cache_duration: none
+          commit_icon: "@"
+          fetch_status: true
+          full_branch_path: true
+        foreground: p:purple
+        type: git
         style: plain
         templates:
           - "{{ .HEAD }} "
-          - "{{ if .Staging.Changed }}{{ end }}{{ if gt .Working.Untracked 0 }}?{{ else if .Working.Changed }}!{{ end }}{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}{{ if gt .StashCount 0 }}{{ end }} "
-        properties:
-          branch_icon: " "
-          branch_max_length: 25
-          commit_icon: "@"
-          full_branch_path: true
-          fetch_status: true
-        foreground: p:purple
-      - type: command
+          - "{{ if .Staging.Changed }}\uf067{{ end }}{{ if gt .Working.Untracked 0 }}?{{ else if .Working.Changed }}!{{ end }}{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}{{ if gt .StashCount 0 }}\uf51e{{ end }} "
+      - properties:
+          cache_duration: none
+          command: $HOME/.zsh/local-prompt.sh 2>/dev/null || true
         template: "{{ .Output }} "
-        interpret: false
-        shell: sh
-        style: plain
-        properties:
-          command: "$HOME/.zsh/local-prompt.sh 2>/dev/null || true"
         foreground: p:blue
-      - type: executiontime
+        type: command
         style: plain
-        template: "{{ .FormattedMs }} "
-        properties:
+      - properties:
+          cache_duration: none
           threshold: 1000
+        template: "{{ .FormattedMs }} "
         foreground: p:gray
-    overflow: hidden
+        type: executiontime
+        style: plain
   - type: prompt
     alignment: left
     segments:
-      - type: text
+      - properties:
+          cache_duration: none
+        template: "❯ "
+        type: text
         style: plain
         foreground_templates:
           - "{{if eq .Code 0}}white{{end}}"
           - "{{if gt .Code 0}}p:red{{end}}"
-        template: "❯ "
     newline: true
-transient_prompt:
-  foreground_templates:
-    - "{{if gt .Code 0}}p:red{{end}}"
-    - "{{if eq .Code 0}}p:fg{{end}}"
-  template: "\n{{ now | date \"15:04:05\" }}❯ "
-secondary_prompt:
-  foreground_templates:
-    - "{{if gt .Code 0}}p:red{{end}}"
-    - "{{if eq .Code 0}}p:fg{{end}}"
-  template: "❯❯ "
 tooltips:
-  - type: aws
+  - properties:
+      display_default: true
+    template:  {{ .Profile }}
+    foreground: p:aqua
+    type: aws
+    style: plain
     tips:
       - aws
       - terraform
-    style: plain
-    template: " {{ .Profile }}"
-    properties:
-      display_default: true
+  - template: "\uf2f4 {{.Context}}{{if .Namespace}}/{{.Namespace}}{{end}} "
     foreground: p:aqua
-  - type: kubectl
+    type: kubectl
+    style: plain
     tips:
       - k
       - kubectl
-    style: plain
+  - template: "\uf1a0 {{.Project}} "
     foreground: p:aqua
-    template: " {{.Context}}{{if .Namespace}}/{{.Namespace}}{{end}} "
-  - type: gcp
+    type: gcp
+    style: plain
     tips:
       - gcp
-    style: plain
-    foreground: p:aqua
-    template: " {{.Project}} "
