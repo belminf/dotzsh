@@ -12,7 +12,7 @@ setopt interactive_comments
 
 # PATHS
 typeset -U cdpath
-cdpath+=("${HOME}/projects" "$HOME")
+cdpath=("." "${HOME}/projects" "$HOME")
 path+=("${HOME}/.local/bin")
 export PATH="${HOME}/.local/bin:/opt/homebrew/bin:$PATH"
 

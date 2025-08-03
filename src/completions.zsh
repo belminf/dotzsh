@@ -6,14 +6,11 @@ done
 compinit -C
 zmodload -i zsh/complist
 
-# Use menu instead of blind completion
-zstyle ':completion:*' menu select
-
-# Submit on first enter
-bindkey -M menuselect '^M' .accept-line
-
 # Complete options
-setopt menu_complete
+zstyle ':completion:*' menu select
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '%F{white}%d%f'
+setopt auto_menu
 setopt complete_in_word
 setopt always_to_end
 _comp_options+=(globdots)
