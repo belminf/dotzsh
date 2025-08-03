@@ -8,6 +8,8 @@ alias rg='rg -S'
 alias tree='tree -C -I "__pycache__|*.pyc"'
 alias ll='eza -l -F auto --color=always --git --group-directories-first --all -all'
 alias gs='git st'
+
+export BAT_STYLE="changes,snip"
 alias cat='bat'
 
 # Conditional aliases
