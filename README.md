@@ -6,7 +6,7 @@
 #### Arch
 
 ```bash
-yay -S --needed pkgfile zsh git fzf direnv python-pipenv kubectx ripgrep bat gron-bin git tree tldr fd eza oh-my-posh
+yay -S --needed pkgfile zsh git fzf direnv python-pipenv kubectx ripgrep bat gron-bin git tree tldr fd eza oh-my-posh-bin
 sudo systemctl enable pkgfile-update.timer
 ```
 

@@ -1,7 +1,6 @@
 init:
 	git submodule update --init
 	ln -sf ~/.zsh/rc.zsh ~/.zshrc
-	ln -sf ~/.zsh/inputrc ~/.inputrc
 
 update:
 	git pull
