@@ -24,6 +24,10 @@ function vc() {
   nvim "$(git conflicted | tr '\n' ' ')"
 }
 
+function vm() {
+  nvim $(git diff --name-only HEAD | tr '\n' ' ')
+}
+
 # dotfile management
 function dotfile() {
   case "$1" in
