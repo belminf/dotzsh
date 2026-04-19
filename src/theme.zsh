@@ -1,5 +1,10 @@
-# OMP prompt
-_evalcache oh-my-posh init zsh --config "$HOME/.zsh/omp.yaml"
+# OMP prompt - using direct eval instead of _evalcache
+eval "$(oh-my-posh init zsh --config "$HOME/.zsh/omp.yaml")"
+
+# Function to set local context for oh-my-posh
+function set_poshcontext() {
+  export POSH_LOCAL_CONTEXT="$($HOME/.zsh/local-prompt.sh 2>/dev/null || true)"
+}
 
 # Syntax highlighting
 fast-theme -q ~/.zsh/syntax-theme.ini

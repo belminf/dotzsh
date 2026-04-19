@@ -23,7 +23,7 @@ blocks:
     alignment: left
     overflow: hidden
     segments:
-      - properties:
+      - options:
           cache_duration: none
           style: full
         template: "\n{{ .Path }} "
@@ -31,7 +31,7 @@ blocks:
         type: path
         style: plain
         newline: true
-      - properties:
+      - options:
           branch_icon: "\uf126 "
           branch_max_length: 25
           cache_duration: none
@@ -44,14 +44,13 @@ blocks:
         templates:
           - "{{ .HEAD }} "
           - "{{ if .Staging.Changed }}\uf067{{ end }}{{ if gt .Working.Untracked 0 }}?{{ else if .Working.Changed }}!{{ end }}{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}{{ if gt .StashCount 0 }}\uf51e{{ end }} "
-      - properties:
+      - options:
           cache_duration: none
-          command: $HOME/.zsh/local-prompt.sh 2>/dev/null || true
-        template: "{{ .Output }} "
+        template: "{{ .Env.POSH_LOCAL_CONTEXT }}"
         foreground: p:blue
-        type: command
+        type: text
         style: plain
-      - properties:
+      - options:
           cache_duration: none
           threshold: 1000
         template: "{{ .FormattedMs }} "
@@ -61,7 +60,7 @@ blocks:
   - type: prompt
     alignment: left
     segments:
-      - properties:
+      - options:
           cache_duration: none
         template: "❯ "
         type: text
@@ -71,7 +70,7 @@ blocks:
           - "{{if gt .Code 0}}p:red{{end}}"
     newline: true
 tooltips:
-  - properties:
+  - options:
       display_default: true
     template:  {{ .Profile }}
     foreground: p:aqua
