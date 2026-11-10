@@ -165,13 +165,14 @@ curl_cert() {
 
 autoload -Uz add-zsh-hook
 
-# List the directory after cd (eza, or just a count when it is large)
+# Run `ll` after cd when the directory is small (dotfiles count, since ll shows them)
+: ${CHPWD_LL_MAX:=20}
 function _chpwd_ls() {
-  local -a entries=(*(N))
-  if (( $#entries > 30 )); then
-    print -P "%F{$C[gray]}${#entries} items%f"
+  local -a entries=(*(DN))
+  if (( $#entries <= CHPWD_LL_MAX )); then
+    eval "${aliases[ll]:-eza -l}"
   else
-    eza --group-directories-first
+    print -P "%F{$C[gray]}${#entries} items%f"
   fi
 }
 (( $+commands[eza] )) && add-zsh-hook chpwd _chpwd_ls
