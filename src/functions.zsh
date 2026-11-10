@@ -162,3 +162,16 @@ curl_cert() {
     sed 's/notBefore=/Valid From: /' | \
     sed 's/notAfter=/Expires: /'
 }
+
+autoload -Uz add-zsh-hook
+
+# List the directory after cd (eza, or just a count when it is large)
+function _chpwd_ls() {
+  local -a entries=(*(N))
+  if (( $#entries > 30 )); then
+    print -P "%F{$C[gray]}${#entries} items%f"
+  else
+    eza --group-directories-first
+  fi
+}
+(( $+commands[eza] )) && add-zsh-hook chpwd _chpwd_ls

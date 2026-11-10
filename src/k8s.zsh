@@ -1,12 +1,15 @@
-#!/bin/bash
-
-_evalcache kubectl completion zsh
-
-if hash gawk 2>/dev/null; then
-  GNU_AWK='gawk'
-else
-  GNU_AWK='awk'
+# Load kubectl completion on first use (generating it costs ~100ms)
+if (( $+commands[kubectl] )); then
+  _kubectl_lazy() {
+    unfunction _kubectl_lazy
+    source <(kubectl completion zsh)
+    _kubectl "$@"
+  }
+  compdef _kubectl_lazy kubectl
 fi
+
+GNU_AWK=${commands[gawk]:+gawk}
+: ${GNU_AWK:=awk}
 
 alias k='kubectl'
 alias kg='kubectl get'
@@ -51,19 +54,11 @@ function kbad() {
 
 ### Decode secret
 function ksecret() {
-  local selected_secret_line selected_ns selected_secret selected_data
+  local line ns secret key
+  line=$(kubectl get secret --all-namespaces -o go-template='{{ range $i := .items }}{{ range $f,$v := .data }}{{ printf "%s %s %s\n" $i.metadata.namespace $i.metadata.name $f }}{{end}}{{end}}' | column -t | fzf ${1:+-q "$1"}) || return
+  read -r ns secret key <<<"$line"
 
-  if [ "$#" -eq 1 ]; then
-    selected_secret_line="$(kubectl get secret --all-namespaces -o go-template -o template='{{ range $i := .items }}{{ range $f,$v := .data }}{{ printf "%s %s %s\n" $i.metadata.namespace $i.metadata.name $f }}{{end}}{{end}}' | column -t | fzf -q "$1")"
-  elif [ "$#" -eq 0 ]; then
-    selected_secret_line="$(kubectl get secret --all-namespaces -o go-template -o template='{{ range $i := .items }}{{ range $f,$v := .data }}{{ printf "%s %s %s\n" $i.metadata.namespace $i.metadata.name $f }}{{end}}{{end}}' | column -t | fzf)"
-  fi
-
-  selected_ns="$($GNU_AWK '{ print $1 }' <<<"$selected_secret_line")"
-  selected_secret="$($GNU_AWK '{ print $2 }' <<<"$selected_secret_line")"
-  selected_data="$($GNU_AWK '{ print $3 }' <<<"$selected_secret_line")"
-
-  echo "[${selected_ns}/${selected_secret}: ${selected_data}]"
+  echo "[${ns}/${secret}: ${key}]"
   echo ""
-  kubectl get secret -n "$selected_ns" "$selected_secret" -o jsonpath --template="{.data.$(sed 's/\./\\./g' <<<"$selected_data")}" | base64 --decode
+  kubectl get secret -n "$ns" "$secret" -o jsonpath --template="{.data.${key//./\\.}}" | base64 --decode
 }

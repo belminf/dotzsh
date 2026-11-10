@@ -1,17 +1,36 @@
-# OMP prompt - using direct eval instead of _evalcache
-eval "$(oh-my-posh init zsh --config "$HOME/.zsh/omp.yaml")"
+# Gruvbox palette: the single source of truth for prompt, fzf and completion colors
+typeset -gA C=(
+  fg '#ebdbb2'  bright '#fbf1c7'  gray '#a89984'  dim '#665c54'  bg '#282828'  sel '#3c3836'
+  red '#cc241d' aqua '#8ec07c'    blue '#83a698'  purple '#d3869b'
+  yellow '#fabd2f' orange '#fe8019' green '#b8bb26'
+)
 
-# Function to set local context for oh-my-posh
-function set_poshcontext() {
-  export POSH_LOCAL_CONTEXT="$($HOME/.zsh/local-prompt.sh 2>/dev/null || true)"
-}
+source "${0:A:h}/prompt.zsh"
 
-# Syntax highlighting
-fast-theme -q ~/.zsh/syntax-theme.ini
+# fzf
+export FZF_DEFAULT_OPTS="
+  --color=fg:$C[fg],bg:-1,hl:$C[yellow],fg+:$C[bright],bg+:$C[sel],hl+:$C[yellow]
+  --color=info:$C[gray],prompt:$C[purple],pointer:$C[purple],marker:$C[aqua]
+  --color=spinner:$C[purple],header:$C[aqua],border:$C[dim],separator:$C[dim],scrollbar:$C[gray]
+  --layout=reverse --prompt=' ' --marker='>' --pointer='◆' --separator='' --scrollbar='│'
+  --preview-window=border-block"
 
-# Dircolors for completions really
-hash dircolors 2>/dev/null && _evalcache dircolors
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# Man pages and less: bold orange headings, aqua flags, yellow search hits (24-bit gruvbox)
+_rgb() { printf '\e[%s;2;%d;%d;%dm' "$1" $((16#${2[2,3]})) $((16#${2[4,5]})) $((16#${2[6,7]})) }
+export LESS_TERMCAP_md=$'\e[1m'$(_rgb 38 $C[orange])      # bold  (headings)
+export LESS_TERMCAP_us=$'\e[4m'$(_rgb 38 $C[aqua])        # underline (flags, args)
+export LESS_TERMCAP_so=$(_rgb 38 $C[bg])$(_rgb 48 $C[yellow])  # search hits / status line
+export LESS_TERMCAP_me=$'\e[0m' LESS_TERMCAP_ue=$'\e[0m' LESS_TERMCAP_se=$'\e[0m'
+unfunction _rgb
+
+# Completion menu
+zstyle ':completion:*:descriptions' format "%F{$C[gray]}%d%f"
+(( $+commands[dircolors] )) && eval "$(dircolors -b)"
+zstyle ':completion:*:messages' format "%F{$C[gray]}%d%f"
+zstyle ':completion:*:warnings' format "%F{$C[red]}no matches%f"
+# Menu selection: highlight the current item with the palette's selection color
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" \
+  "ma=48;2;$((16#${C[sel][2,3]}));$((16#${C[sel][4,5]}));$((16#${C[sel][6,7]}))"
 
 # eza colors
 #

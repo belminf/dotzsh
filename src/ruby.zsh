@@ -1,1 +1,1 @@
-hash rbenv 2>/dev/null && _evalcache rbenv init -
+(( $+commands[rbenv] )) && eval "$(rbenv init - zsh)"

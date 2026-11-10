@@ -1,50 +1,39 @@
-# Load completions
-fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+# Completions
+fpath=(~/.zsh/plugins/zsh-completions/src /opt/homebrew/share/zsh/site-functions $fpath)
 autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
+# Full check once a day, otherwise trust the dump
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
   compinit
-done
-compinit -C
+else
+  compinit -C
+fi
+# Compile the dump in the background for next time
+[[ ~/.zcompdump -nt ~/.zcompdump.zwc ]] && zcompile ~/.zcompdump &!
 zmodload -i zsh/complist
 
-# Complete options
 zstyle ':completion:*' menu select
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*:descriptions' format '%F{white}%d%f'
-setopt auto_menu
-setopt complete_in_word
-setopt always_to_end
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*'  # ignore case, complete after . _ -
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' use-cache yes
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compcache"
+[[ -d ${XDG_CACHE_HOME:-$HOME/.cache}/zsh ]] || mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=1;31'
+setopt auto_menu complete_in_word always_to_end
 _comp_options+=(globdots)
 
-# Enable shift tab on completion
+# Shift-tab reverses in the menu
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
-# fzf
-export FZF_DEFAULT_OPTS='
-  --color=fg:#cdd6f4,fg+:#d0d0d0,bg:#000000,bg+:#262626
-  --color=hl:#89b4fa,hl+:#5fd7ff,info:#f5e0dc,marker:#94e2d5
-  --color=prompt:#cba6f7,spinner:#af5fff,pointer:#af5fff,header:#94e2d5
-  --color=gutter:#1e1e2e,border:#313244,separator:#313244,scrollbar:#b4befe
-  --color=preview-bg:#313244,label:#aeaeae,query:#cdd6f4,disabled:#842626
-  --preview-window="border-block" --prompt=" " --marker=">" --pointer="◆"
-  --separator="" --scrollbar="│" --layout="reverse"'
-
-# Use fd for generating path candidates
-_fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
-}
-
-_fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
-}
-_evalcache fzf --zsh
+# fzf (Ctrl-T files, Ctrl-R history, Alt-C cd) using fd for candidates
+_fzf_compgen_path() { fd --hidden --follow --exclude ".git" . "$1" }
+_fzf_compgen_dir()  { fd --type d --hidden --follow --exclude ".git" . "$1" }
+(( $+commands[fzf] )) && source <(fzf --zsh)
 
 # Application specific
-
-# GCP
 source "${CLOUDSDK_ROOT_DIR:-/opt/homebrew/share/google-cloud-sdk}/completion.zsh.inc" 2>/dev/null
-
-# AWS
-# Ref: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html
-autoload bashcompinit && bashcompinit
-complete -C 'aws_completer' aws
+if (( $+commands[aws_completer] )); then
+  autoload -Uz bashcompinit && bashcompinit
+  complete -C aws_completer aws
+fi

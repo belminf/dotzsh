@@ -21,16 +21,3 @@ else
   alias v='vim'
   export EDITOR=vim
 fi
-
-# GNU tool env vars
-if hash gls 2>/dev/null; then
-  export GNU_LS='gls'
-else
-  export GNU_LS='ls'
-fi
-
-if hash gwhich 2>/dev/null; then
-  export GNU_WHICH='gwhich'
-else
-  export GNU_WHICH='which'
-fi

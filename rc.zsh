@@ -1,16 +1,7 @@
 SRC="$HOME/.zsh/src"
 
-source "$SRC/history.zsh"
-source "$SRC/plugins.zsh"
-source "$SRC/completions.zsh"
-source "$SRC/options.zsh"
-source "$SRC/clipboard.zsh"
-source "$SRC/functions.zsh"
-source "$SRC/aliases.zsh"
-source "$SRC/ssh_agent.zsh"
-source "$SRC/ruby.zsh"
-source "$SRC/k8s.zsh"
-source "$SRC/git-auto-fetch.zsh"
-source "$SRC/theme.zsh"
+for f in history options completions clipboard functions aliases ssh_agent ruby k8s git-auto-fetch theme plugins; do
+  source "$SRC/$f.zsh"
+done
 
-source "$SRC/local.zsh" 2>/dev/null
+for f in "$SRC"/local*.zsh(N); do source "$f"; done
