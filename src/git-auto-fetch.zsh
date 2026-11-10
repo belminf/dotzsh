@@ -8,7 +8,7 @@ _git_auto_fetch() {
   local dir; dir=$(command git rev-parse --git-dir 2>/dev/null) || return
   [[ -w $dir && ! -f $dir/NO_AUTO_FETCH ]] || return
   (( EPOCHSECONDS - $(zstat +mtime $dir/FETCH_LOG 2>/dev/null || echo 0) < GIT_AUTO_FETCH_INTERVAL )) && return
-  GIT_SSH_COMMAND="command ssh -o BatchMode=yes" GIT_TERMINAL_PROMPT=0 \
+  GIT_SSH_COMMAND="command ssh -o BatchMode=yes -o ConnectTimeout=5" GIT_TERMINAL_PROMPT=0 \
     command git fetch --all --recurse-submodules=yes &>| $dir/FETCH_LOG &!
 }
 
