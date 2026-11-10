@@ -31,6 +31,21 @@ _fzf_compgen_path() { fd --hidden --follow --exclude ".git" . "$1" }
 _fzf_compgen_dir()  { fd --type d --hidden --follow --exclude ".git" . "$1" }
 (( $+commands[fzf] )) && source <(fzf --zsh)
 
+# Tab on a new word opens the fzf file picker (Ctrl-T) on an empty line or after a
+# file-oriented command; everywhere else it completes as usual (git, kubectl, ssh, cd ...)
+typeset -ga TAB_FILE_CMDS=(v vi vim nvim cat bat less head tail rm cp mv ls ll eza tree)
+_tab_or_files() {
+  local -a words=(${(z)LBUFFER})
+  if (( $+widgets[fzf-file-widget] )) &&
+     [[ -z $LBUFFER || ( $LBUFFER == *[[:space:]] && ${TAB_FILE_CMDS[(Ie)$words[1]]} -gt 0 ) ]]; then
+    zle fzf-file-widget
+  else
+    zle ${${widgets[fzf-completion]:+fzf-completion}:-expand-or-complete}
+  fi
+}
+zle -N _tab_or_files
+bindkey -M viins '^I' _tab_or_files
+
 # Application specific
 source "${CLOUDSDK_ROOT_DIR:-/opt/homebrew/share/google-cloud-sdk}/completion.zsh.inc" 2>/dev/null
 if (( $+commands[aws_completer] )); then
