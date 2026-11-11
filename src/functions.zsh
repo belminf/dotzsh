@@ -35,6 +35,7 @@ function dotfile() {
     for dotfile in ~/.zsh ~/.tmux ~/.vim; do
       echo "$dotfile:"
       git -C $dotfile pull
+      git -C $dotfile pull --ff-only github "$(git -C $dotfile branch --show-current)"
       echo
     done
     ;;
