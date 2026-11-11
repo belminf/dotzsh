@@ -163,16 +163,3 @@ curl_cert() {
     sed 's/notAfter=/Expires: /'
 }
 
-autoload -Uz add-zsh-hook
-
-# Run `ll` after cd when the directory is small (dotfiles count, since ll shows them)
-: ${CHPWD_LL_MAX:=20}
-function _chpwd_ls() {
-  local -a entries=(*(DN))
-  if (( $#entries <= CHPWD_LL_MAX )); then
-    eval "${aliases[ll]:-eza -l}"
-  else
-    print -P "%F{$C[gray]}${#entries} items%f"
-  fi
-}
-(( $+commands[eza] )) && add-zsh-hook chpwd _chpwd_ls
